@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    <title>User Directory</title>
+</head>
+<body>
+    <header>
+        <h1>User Directory</h1>
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="search by name or username">
+            <select name="" id="sortSelect">
+                <option value="">Sort by Name</option>
+                <option value="">A &rarr; Z</option>
+                <option value="">Z &rarr; A</option>
+            </select>
+            <button id="themeToggle">Toggle Dark Mode</button>
+        </div>
+    </header>
+
+    <div id="loading" class="loading">Loading Users...</div>
+    <div id="userGrid" class="user-grid"></div>
+    <div id="noResults" class="no-results">No users found.</div>
+    <div id="pagination" class="pagination"></div>
+
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalName"></h2>
+            <p><strong>Username:</strong><span id="madalUsername"></span></p>
+            <p><strong>Email:</strong><span id="modalEmail"></span></p>
+            <p><strong>Phone:</strong><span id="modalPhone"></span></p>
+            <p><strong>Address:</strong><span id="modalAddress"></span></p>
+            <p><strong>Company:</strong><span id="modalCompany"></span></p>
+        </div>
+    </div>
+</body>
+</html>
