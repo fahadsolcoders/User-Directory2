@@ -94,3 +94,49 @@ function setupPagination() {
     })
     pagination.appendChild(nextBtn)
 }
+
+function handleSearch(){
+    const query = searchInput.ariaValueMax.toLocaleLowerCase()
+    filteredUsers = users.filter(user => user.name.toLocaleLowerCase().includes(query) || user.username.toLocaleLowerCase().includes(query))
+    currentPage = 1
+    handelsort();
+}
+
+function handelsort(){
+    const sortValue = sortSelect.value
+    if(sortValue === "asc"){
+        filteredUsers.sort((a,b) => a.name.localeCompare(b.name))
+    }
+    else if(sortValue === "desc"){
+        filteredUsers.sort((a,b) => b.name.localeCompare(a.name))
+    }
+    currentPage = 1
+    displayUsers()
+}
+
+function openModal(user){
+    document.getElementById("modalName").textContent = user.name;
+    document.getElementById("modalUsername").textContent = user.username
+    document.getElementById("modalPhone").textContent = user.phone
+    document.getElementById("modalAddress").textContent = `${user.address.street},${user.address.city},${user.address,zipcode}`
+    document.getElementById("modalCompany").textContent = user.company.name
+    modal.style.display = "flex"
+}
+
+function closeModal() {
+    modal.style.display = "none" 
+}
+
+function toggleTheme(){
+    document.body.classList.toggle("dark")
+    if(document.body.classList.contains("dark")){
+        localStorage.setItem("theme","dark")
+    }
+    else{
+        localStorage.removeItem("theme")
+    }
+}
+
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark")
+}
